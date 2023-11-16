@@ -241,8 +241,16 @@ function endsWith(str, substr) {
  *   formatTime(0, 45) => "00:45"
  *   formatTime(0, 0) => "00:00"
  */
-function formatTime(/* minutes, seconds */) {
-  throw new Error('Not implemented');
+function formatTime(minutes, seconds) {
+  let min = String(minutes);
+  let sec = String(seconds);
+  if (minutes < 10) {
+    min = min.padStart(2, '0');
+  }
+  if (seconds < 10) {
+    sec = sec.padStart(2, '0');
+  }
+  return min.concat(':', sec);
 }
 
 /**
@@ -304,8 +312,15 @@ function containsSubstring(/* str, substring */) {
  *   countVowels('aEiOu') => 5
  *   countVowels('XYZ') => 1
  */
-function countVowels(/* str */) {
-  throw new Error('Not implemented');
+function countVowels(str) {
+  const vowel = 'aeiouyAEIOUY';
+  let cont = 0;
+  for (let i = 0; i < str.length; i += 1) {
+    if (vowel.indexOf(str[i]) !== -1) {
+      cont += 1;
+    }
+  }
+  return cont;
 }
 
 /**
