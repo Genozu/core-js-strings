@@ -40,8 +40,14 @@ function getStringLength(value) {
  *   isString('test') => true
  *   isString(new String('test')) => true
  */
-function isString(/* value */) {
-  throw new Error('Not implemented');
+function isString(value) {
+  if (typeof value === 'string') {
+    return true;
+  }
+  if (value instanceof String) {
+    return true;
+  }
+  return false;
 }
 
 /**
@@ -283,8 +289,8 @@ function orderAlphabetically(str) {
  *   containsSubstring('JavaScript is Fun', 'Python') => false
  *   containsSubstring('12345', '34') => true
  */
-function containsSubstring(/* str, substring */) {
-  throw new Error('Not implemented');
+function containsSubstring(str, substring) {
+  return str.includes(substring);
 }
 
 /**
@@ -301,8 +307,16 @@ function containsSubstring(/* str, substring */) {
  *   countVowels('aEiOu') => 5
  *   countVowels('XYZ') => 1
  */
-function countVowels(/* str */) {
-  throw new Error('Not implemented');
+function countVowels(str) {
+  const vowels = 'aeiouyAEIOUY';
+  let count = 0;
+
+  for (let i = 0; i < str.length; i += 1) {
+    if (vowels.indexOf(str[i]) !== -1) {
+      count += 1;
+    }
+  }
+  return count;
 }
 
 /**
@@ -318,8 +332,15 @@ function countVowels(/* str */) {
  *   isPalindrome('apple') => false
  *   isPalindrome('No lemon, no melon') => true
  */
-function isPalindrome(/* str */) {
-  throw new Error('Not implemented');
+function isPalindrome(str) {
+  const str1 = str.toLowerCase().replace(/\W/g, '');
+  const strArray = [...str1];
+  const newArray = [];
+  strArray.forEach((Element) => {
+    newArray.unshift(Element);
+  });
+  const reversedStr = newArray.join('');
+  return str1 === reversedStr;
 }
 
 /**
